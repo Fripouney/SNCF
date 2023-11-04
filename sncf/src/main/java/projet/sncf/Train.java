@@ -1,8 +1,11 @@
 package projet.sncf;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,6 +16,9 @@ public class Train {
 	private int id;
 	private int retard = 0;
 	private boolean annule = false;
+	
+	@ManyToMany(mappedBy = "trains")
+	private Set<Trajet> trajets;
 
 	public int getId() {
 		return id;

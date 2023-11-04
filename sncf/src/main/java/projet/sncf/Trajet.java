@@ -1,12 +1,16 @@
 package projet.sncf;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,9 +23,9 @@ public class Trajet {
 	private String depart;
 	private String arrivee;
 	
-	@OneToOne
-	@JoinColumn(name = "idTrain")
-	private Train train;
+	@ManyToMany
+	@JoinTable(name = "Trajet_Train", joinColumns = @JoinColumn(name = "idTrain"), inverseJoinColumns = @JoinColumn(name = "idTrajet"))
+	private Set<Train> trains;
 	
 	
 	public int getId() {
@@ -48,13 +52,11 @@ public class Trajet {
 		this.arrivee = arrivee;
 	}
 	
-	public Train getTrain() {
-		return train;
+	public Set<Train> getTrain() {
+		return trains;
 	}
 	
-	public void setTrain(Train train) {
-		this.train = train;
+	public void setTrain(Set<Train> trains) {
+		this.trains = trains;
 	}
-	
-	
 }
