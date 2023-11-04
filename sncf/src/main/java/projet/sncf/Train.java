@@ -19,6 +19,10 @@ public class Train {
 	
 	@ManyToMany(mappedBy = "trains")
 	private Set<Trajet> trajets;
+	
+	public Train(Set<Trajet> trajets) {
+		this.trajets = trajets;
+	}
 
 	public int getId() {
 		return id;

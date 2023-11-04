@@ -18,6 +18,12 @@ public class User {
 	private String prenom;
 	private boolean isAdmin;
 	
+	public User(String nom, String prenom, boolean admin) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.isAdmin = admin;
+	}
+	
 	
 	public int getId() {
 		return id;
