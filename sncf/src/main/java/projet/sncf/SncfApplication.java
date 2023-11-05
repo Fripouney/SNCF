@@ -13,10 +13,11 @@ public class SncfApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner addUsers(UserRepository repo) {
+	public CommandLineRunner addUsers(UserRepository repoUser, TrajetRepository repoTrajets, TrainRepository repoTrains) {
+		//Ajout de quelques utilisateurs en base (exemples)
 		return (args) -> {
-			repo.save(new User("Macron", "Emmanuel", false));
-			repo.save(new User("Zidane", "Zinedine", true));		
+			repoUser.save(new User("Macron", "Emmanuel", false));
+			repoUser.save(new User("Zidane", "Zinedine", true));
 		};
 	}
 }

@@ -13,7 +13,7 @@ public class User {
 	@Id
 	@Column(name = "idUser")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	private String nom;
 	private String prenom;
 	private boolean isAdmin;
@@ -25,11 +25,11 @@ public class User {
 	}
 	
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

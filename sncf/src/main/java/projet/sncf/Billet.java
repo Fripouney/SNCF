@@ -1,6 +1,7 @@
 package projet.sncf;
 
-import java.sql.Date;
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -11,23 +12,24 @@ import jakarta.persistence.Table;
 @Table(name = "Billet")
 public class Billet {
 	@Id
-	private int id;
+	private long id;
 	private int prix;
 	private Date date;
-	
-	@OneToMany
-	@JoinColumn(name = "idUser")
 	private User utilisateur;
-	
-	@OneToMany
-	@JoinColumn(name = "idTrajet")
 	private Trajet trajet;
 	
-	public int getId() {
+	public Billet(int prix, Date date, User user, Trajet trajet) {
+		this.prix = prix;
+		this.date = date;
+		this.utilisateur = user;
+		this.trajet = trajet;
+	}
+	
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

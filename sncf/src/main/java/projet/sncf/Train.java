@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 public class Train {
 	@Id
 	@Column(name = "idTrain")
-	private int id;
+	private long id;
 	private int retard = 0;
 	private boolean annule = false;
 	
@@ -24,11 +24,11 @@ public class Train {
 		this.trajets = trajets;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

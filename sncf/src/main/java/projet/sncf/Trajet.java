@@ -19,7 +19,7 @@ public class Trajet {
 	@Id
 	@Column(name = "idTrajet")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	private String depart;
 	private String arrivee;
 	
@@ -27,12 +27,16 @@ public class Trajet {
 	@JoinTable(name = "Trajet_Train", joinColumns = @JoinColumn(name = "idTrain"), inverseJoinColumns = @JoinColumn(name = "idTrajet"))
 	private Set<Train> trains;
 	
+	public Trajet(String depart, String arrivee) {
+		this.depart = depart;
+		this.arrivee = arrivee;
+	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
