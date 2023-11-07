@@ -30,9 +30,9 @@ public class LoginController {
         User user = userRepository.findByUsernameAndPassword(username, password);
         if (user != null) {
             session.setAttribute("user", user);
-            return "redirect:/index"; // Make sure you have a mapping for "/index"
+            return "redirect:/index";
         } else {
-            model.addAttribute("loginError", "Wrong username or password.");
+            model.addAttribute("Nom ou mot de passe incorrect");
             return "login";
         }
     }
