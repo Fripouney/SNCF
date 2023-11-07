@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<title>Rechercher un trajet</title>
+		
+	</head>
+	
+	<body>
+		
+		<form action="/rechercheTrajet" method="post">
+		
+		<p>
+			<label for="depart">Lieu de départ</label>
+			<input type="text" name="depart" id="depart">
+		</p>
+
+		
+		<p>
+			<label for="arrivee">Lieu d'arrivée</label>
+			<input type="text" name="arrivee" id="arrivee">
+		</p>
+		
+		<p>
+			<label for="date_depart">Date de départ</label>
+			<input type="datetime" name="date_depart" id="date_depart">
+		</p>
+		
+		<p>
+			<label for="date_arrivee">Date d'arrivée</label>
+			<input type="datetime" name="date_arrivee" id="date_arrivee">
+		</p>
+		
+		<input type="submit" value="Rechercher">
+			
+		</form>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<title>Ajouter un trajet</title>
+		
+	</head>
+	
+	<body>
+		<h1>Ajouter un nouveau trajet</h1>
+		<!-- action à définir -->
+		<form action="/billet/ajouter" method="post">
+			<p>
+				<label for="newDepart">Lieu de départ</label>
+				<input type="text" name="newDepart" id="newDepart">
+			</p>
+			
+			<p>
+				<label for="newArrivee"> Lieu d'arrivee</label>
+				<input type="text" name="newArrivee" id="newArrivee">
+			</p>
+			
+			<p>
+				<label for="newHeureDepart">Heure de départ</label>
+				<input type="datetime" name="newHeureDepart" id="newHeureDepart">
+			</p>
+			
+			<p>
+				<label for="newHeureArrivee">Heure d'arrivée</label>
+				<input type="datetime" name="newHeureArrivee" id="newHeureArrivee">
+			</p>
+			
+			<input type="submit" value="Ajouter ce trajet">
+			
+		</form>
+		
+	</body>
+</html>
