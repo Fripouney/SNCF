@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<title>Vos billets</title>
+		
+	</head>
+	
+	<body>
+		
+		<ul>
+			<!-- Adapter en fonction des attibuts de la base de données -->
+			<li th:each="billet : ${billets}">
+				<p th:text="trajet ${billet.trajet.depart} - ${billet.trajet.arrivee}"></p>
+				<p th:text="Départ : ${billet.dateDepart}"></p>
+				<p th:text="Arrivée : ${billet.dateArrivee}"></p>	
+			</li>
+		</ul>
+		
+	</body>
+	
+</html>
