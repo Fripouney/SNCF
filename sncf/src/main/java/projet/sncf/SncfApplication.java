@@ -18,16 +18,14 @@ public class SncfApplication {
     @Bean
     CommandLineRunner initDatabase(UserRepository userRepository) {
         return args -> {
-            // Check if admin user already exists to prevent duplicate entries
+            
             String adminUsername = "admin";
             if (userRepository.findByUsername(adminUsername) == null) {
-                // Create an admin user instance
                 User user = new User();
                 user.setUsername(adminUsername);
                 user.setPassword("123");
                 user.setIsAdmin(true);
 
-                // Save the user to the database
                 userRepository.save(user);
             }
         };
