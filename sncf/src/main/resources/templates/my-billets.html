@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Tickets</title>
+    <!-- Add your stylesheet links here -->
+</head>
+<body>
+
+<h1>Your Tickets</h1>
+
+<div th:if="${billets.isEmpty()}">
+    <p>You have no tickets.</p>
+    <form th:action="@{/trajets}" method="get">
+        <button type="submit">Find Trips</button>
+    </form>
+</div>
+
+<div th:unless="${billets.isEmpty()}">
+    <table>
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Start</th>
+                <th>Finish</th>
+                <!-- Add more headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="billet : ${billets}">
+                <td th:text="${billet.price}">Ticket Price</td>
+                <td th:text="${billet.date}">Ticket Date</td>
+                <td th:text="${billet.trajet.start}">Start Location</td>
+                <td th:text="${billet.trajet.finish}">Finish Location</td>
+                <!-- Add more columns if needed -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
