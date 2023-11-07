@@ -15,17 +15,15 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    // Get all users
     @GetMapping
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    // Get a single user
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id " + id));
+                .orElseThrow(() -> new RuntimeException("Pas d'utilisateur trouvé avec l'id " + id));
     }
     
     @PostMapping
@@ -36,7 +34,7 @@ public class UserController {
     @PutMapping("/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id " + id));
+                .orElseThrow(() -> new RuntimeException("Pas d'utilisateur trouvé avec l'id " + id));
 
         user.setUsername(userDetails.getUsername());
         user.setPassword(userDetails.getPassword());
@@ -45,7 +43,6 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    // Delete a user
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);
