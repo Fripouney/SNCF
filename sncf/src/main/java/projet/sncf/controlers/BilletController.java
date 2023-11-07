@@ -18,17 +18,15 @@ public class BilletController {
     @Autowired
     private BilletRepository billetRepository;
 
-    // Get all billets for a user
     @GetMapping("/client/{clientId}")
     public List<Billet> getAllBilletsByUser(@PathVariable Long userId) {
         return billetRepository.findByUserId(userId);
     }
-
-    // Get details for a single billet
+    
     @GetMapping("/{id}")
     public Billet getBilletById(@PathVariable Long id) {
         return billetRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Billet not found with id " + id));
+                .orElseThrow(() -> new RuntimeException("Billet non trouvé avec l'id " + id));
     }
     
     @GetMapping("/my-billets")
@@ -38,21 +36,18 @@ public class BilletController {
             Set<Billet> userBillets = user.getBillets();
             model.addAttribute("billets", userBillets);
         }
-        return "my-tickets"; // This should be the name of your Thymeleaf template
+        return "my-tickets";
     }
 
-
-    // Create a new billet
     @PostMapping
     public Billet createBillet(@RequestBody Billet billet) {
         return billetRepository.save(billet);
     }
 
-    // Update a billet
     @PutMapping("/{id}")
     public Billet updateBillet(@PathVariable Long id, @RequestBody Billet billetDetails) {
         Billet billet = billetRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Billet not found with id " + id));
+                .orElseThrow(() -> new RuntimeException("Billet non trouvé avec l'id " + id));
 
         billet.setUser(billetDetails.getUser());
         billet.setTrajet(billetDetails.getTrajet());
@@ -62,7 +57,6 @@ public class BilletController {
         return billetRepository.save(billet);
     }
 
-    // Delete a billet
     @DeleteMapping("/{id}")
     public void deleteBillet(@PathVariable Long id) {
         billetRepository.deleteById(id);
